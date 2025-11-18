@@ -1,0 +1,20 @@
+D:\Project\WPF\TODO LIst\TODO LIst\bin\Debug\net8.0-windows\TODO LIst.exe
+D:\Project\WPF\TODO LIst\TODO LIst\bin\Debug\net8.0-windows\TODO LIst.deps.json
+D:\Project\WPF\TODO LIst\TODO LIst\bin\Debug\net8.0-windows\TODO LIst.runtimeconfig.json
+D:\Project\WPF\TODO LIst\TODO LIst\bin\Debug\net8.0-windows\TODO LIst.dll
+D:\Project\WPF\TODO LIst\TODO LIst\bin\Debug\net8.0-windows\TODO LIst.pdb
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\MainWindow.g.cs
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\App.g.cs
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\TODO LIst_MarkupCompile.cache
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\TODO LIst_MarkupCompile.lref
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\MainWindow.baml
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\TODO LIst.g.resources
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\TODO LIst.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\TODO LIst.AssemblyInfoInputs.cache
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\TODO LIst.AssemblyInfo.cs
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\TODO LIst.csproj.CoreCompileInputs.cache
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\TODO LIst.dll
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\refint\TODO LIst.dll
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\TODO LIst.pdb
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\TODO LIst.genruntimeconfig.cache
+D:\Project\WPF\TODO LIst\TODO LIst\obj\Debug\net8.0-windows\ref\TODO LIst.dll

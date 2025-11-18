@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project\\WPF\\TODO LIst\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C0419406-EB9E-40EE-B078-8D2C71075308}|TODO LIst\\TODO LIst.csproj|d:\\project\\wpf\\todo list\\todo list\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C0419406-EB9E-40EE-B078-8D2C71075308}|TODO LIst\\TODO LIst.csproj|solutionrelative:todo list\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0419406-EB9E-40EE-B078-8D2C71075308}|TODO LIst\\TODO LIst.csproj|d:\\project\\wpf\\todo list\\todo list\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0419406-EB9E-40EE-B078-8D2C71075308}|TODO LIst\\TODO LIst.csproj|solutionrelative:todo list\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0419406-EB9E-40EE-B078-8D2C71075308}|TODO LIst\\TODO LIst.csproj|d:\\project\\wpf\\todo list\\todo list\\todos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0419406-EB9E-40EE-B078-8D2C71075308}|TODO LIst\\TODO LIst.csproj|solutionrelative:todo list\\todos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0419406-EB9E-40EE-B078-8D2C71075308}|TODO LIst\\TODO LIst.csproj|d:\\project\\wpf\\todo list\\todo list\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0419406-EB9E-40EE-B078-8D2C71075308}|TODO LIst\\TODO LIst.csproj|solutionrelative:todo list\\todo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{25f7e850-ffa1-11d0-b63f-00a0c922e851}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "TODO LIst\\MainWindow.xaml",
+              "ToolTip": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\MainWindow.xaml*",
+              "RelativeToolTip": "TODO LIst\\MainWindow.xaml*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-14T04:02:31.669Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Todos.cs",
+              "DocumentMoniker": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\Todos.cs",
+              "RelativeDocumentMoniker": "TODO LIst\\Todos.cs",
+              "ToolTip": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\Todos.cs",
+              "RelativeToolTip": "TODO LIst\\Todos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T06:00:02.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TODO.cs",
+              "DocumentMoniker": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\TODO.cs",
+              "RelativeDocumentMoniker": "TODO LIst\\TODO.cs",
+              "ToolTip": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\TODO.cs",
+              "RelativeToolTip": "TODO LIst\\TODO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T05:51:44.072Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "TODO LIst\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\MainWindow.xaml.cs",
+              "RelativeToolTip": "TODO LIst\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAzwBgAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-14T04:02:28.515Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
