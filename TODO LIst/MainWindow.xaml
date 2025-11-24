@@ -5,15 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TODO_LIst"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        
+        Title="TODO List" Height="500" Width="800"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="LightGray">
+
+    <!--
+    WidowChrome은 윈도우 테두리와 타이틀 바가 존재하는곳을 의미한다.
+    난 OS에서 지원하는 윈도우 바를 지웠기때문에 최소화, 최대화, 닫기, 크기조절, 위치조절을 직접 구현해야한다.
+    아래에서 크기조절 기능을 OS에서 지원받기위해 Window.Style을 사용해 WindowChrome의 기능을 설정한다.
+    
+    ResizeBorderThickness는 윈도우 테두리를 클릭-드래그하여 창 크기조절을할때 클릭 가능한 영역의 크기를 말한다.
+    CaptionHeigt는 OS가 인식하는 상단 타이틀바의 크기를 의미한다.(그 아래있는 컨트롤들은 클릭 불가능)
+    CornerRadius는 테두리를 곡선형으로 만드는 기능이다.
+    GlassFrameThickness는 창 외곽의 글래스 영역의 두께를 의미한다(Glass 효과를 만들때 사용)
+    UseAeroCaptionButtons는 기본 최소화, 최대화, 닫기 버튼을 사용할지 말지 여부이다(WindowStyle이 None일때는 True여도 미작동)
+    -->
+    <Window.Style>
+        <Style TargetType="Window">
+            <Setter Property="WindowChrome.WindowChrome">
+                <Setter.Value>
+                    <WindowChrome
+                        ResizeBorderThickness="5"
+                        CaptionHeight="45"
+                        CornerRadius="0"
+                        GlassFrameThickness="0"
+                        UseAeroCaptionButtons="True"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Style>
+
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="79*"/>
+            <ColumnDefinition Width="721*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="24.098"/>
+            <RowDefinition Height="20.902"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-        
-        <!-- 할일 표시해주는 부분 -->
-        <Border Padding="20" Grid.Row="0">
+
+        <!-- 커스텀 타이틀바 UI -->
+        <Border Grid.ColumnSpan="2" Background="Gray" Padding="10"
+                    MouseDown="Border_MouseDown" Grid.RowSpan="2">
+            <Grid>
+                <!-- 타이틀 텍스트 -->
+                <TextBlock HorizontalAlignment="Left"
+                               Text="Todo List" FontSize="15" FontWeight="Bold"/>
+
+                <!-- 불투명도 조절, 최소화, 최대화, 닫기 그룹 -->
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <!-- 불투명도 조절 슬라이더 -->
+                    <Slider VerticalAlignment="Center" Width="100" Margin="0,0,20,0"
+                               Value="100" Minimum="30" Maximum="100"
+                               ValueChanged="Slider_Opacity"/>
+                    <!-- 최소화 버튼 -->
+                    <Button Content="_" Margin="2.5"
+                                Width="20" Height="20"
+                                Click="OnClick_Minimize"/>
+                    <!-- 최대화 버튼 -->
+                    <Button Content="ㅁ" Margin="2.5"
+                                Width="20" Height="20"
+                                Click="OnClick_Maximize"/>
+                    <!-- 닫기 버튼 -->
+                    <Button Content="X" Margin="2.5"
+                                Width="20" Height="20"
+                                Click="OnClick_Close"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- 메인 UI -->
+        <Border Padding="20" Grid.Row="2" Grid.ColumnSpan="2">
             <StackPanel Orientation="Vertical">
                 <Label FontSize="22" FontWeight="Bold">오늘의 할일:</Label>
                 <ItemsControl ItemsSource="{Binding AllTodos}" Padding="0, 20, 0, 0">
@@ -30,7 +97,7 @@
         </Border>
 
         <!--할일 추가-->
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="0,422,0,0">
             <TextBox x:Name="NewTodoTextBox"  Width="150" Margin="10"/>
             <Button Content="할일 추가" Margin="10" Click="OnclickAddTodoBtn"/>
         </StackPanel>

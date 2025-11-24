@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\TODO LIst.csproj",
+      "projectUniqueName": "D:\\Project\\WPF\\TODO_List\\TODO LIst\\TODO LIst.csproj",
       "projectName": "TODO LIst",
-      "projectPath": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\TODO LIst.csproj",
+      "projectPath": "D:\\Project\\WPF\\TODO_List\\TODO LIst\\TODO LIst.csproj",
       "packagesPath": "C:\\Users\\yofp1\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\WPF\\TODO LIst\\TODO LIst\\obj\\",
+      "outputPath": "D:\\Project\\WPF\\TODO_List\\TODO LIst\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

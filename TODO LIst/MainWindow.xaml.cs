@@ -34,5 +34,43 @@ namespace TODO_LIst
             };
             todos.AllTodos.Add(todo);
         }
+
+        #region MoveWindow
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+        #endregion
+
+        #region Opacity
+        private void Slider_Opacity(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            double percent = e.NewValue;              // 0~100
+            this.Opacity = percent / 100.0;           // WPF Opacity는 0~1
+        }
+        #endregion
+
+        #region OnClick
+        private void OnClick_Minimize(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void OnClick_Maximize(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+                this.WindowState = WindowState.Normal;
+            else
+                this.WindowState = WindowState.Maximized;
+        }
+
+        private void OnClick_Close(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
     }
 }
