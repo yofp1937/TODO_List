@@ -1,43 +1,24 @@
-﻿using System.Text;
+﻿/*
+ * 사용자가 보는 화면(View)을 담당
+ */
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using TODO_List.Calendar;
+using TODO_List.ViewModel;
 
 namespace TODO_LIst
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private CalendarBuilder _calendarBuilder;
-        private DateTime _currentMonth;
+        private MainViewModel _mvm;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            _calendarBuilder = new CalendarBuilder(DateGrid, CalendarGrid);
-            _currentMonth = DateTime.Today;
-            _calendarBuilder.CreateCalendar(_currentMonth);
+            // DataContext 설정
+            _mvm = new MainViewModel();
+            DataContext = _mvm;
         }
-
-        #region MoveWindow
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if(e.LeftButton == MouseButtonState.Pressed)
-            {
-                this.DragMove();
-            }
-        }
-        #endregion
 
         #region Opacity
         private void Slider_Opacity(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -67,19 +48,14 @@ namespace TODO_LIst
         }
         #endregion
 
-        private void OnClick_PreviousMonth(object sender, RoutedEventArgs e)
+        #region MoveWindow
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
-
+            if(e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
         }
-
-        private void OnClick_Calneder(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void OnClick_NextMonth(object sender, RoutedEventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

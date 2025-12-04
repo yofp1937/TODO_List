@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TODO_LIst"
+        xmlns:conv="clr-namespace:TODO_List.Converters"
         mc:Ignorable="d"
         
         Title="TODO List" Height="800" MinHeight="600" Width="1100" MinWidth="750"
@@ -37,6 +38,11 @@
         </Style>
     </Window.Style>
 
+    <!-- Converter 등록 -->
+    <Window.Resources>
+        <conv:WeekDayToColorConverter x:Key="WeekDayToColorConverter"/>
+    </Window.Resources>
+
     <Grid>
         <!-- 전체 영역 크기 조절 -->
         <Grid.ColumnDefinitions>
@@ -44,9 +50,12 @@
             <ColumnDefinition Width="75*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/> <!-- 커스텀 타이틀바 -->
-            <RowDefinition Height="Auto" /> <!-- 년/월 표시, 넘기기 버튼 -->
-            <RowDefinition/> <!-- 메인 UI(날짜 표시) -->
+            <RowDefinition Height="Auto"/>
+            <!-- 커스텀 타이틀바 -->
+            <RowDefinition Height="Auto" />
+            <!-- 년/월 표시, 넘기기 버튼 -->
+            <RowDefinition/>
+            <!-- 메인 UI(날짜 표시) -->
         </Grid.RowDefinitions>
 
         <!-- 커스텀 타이틀바 UI -->
@@ -85,21 +94,20 @@
                 <!-- 일정 추가 버튼 -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Stretch">
                     <Button Content="+" FontSize="15" FontWeight="Bold"
-                                    MinWidth="30" Width="Auto" Height="Auto" Padding="5"
-                                    Click="OnClick_Calneder"/>
+                                MinWidth="30" Width="Auto" Height="Auto" Padding="5"/>
                 </StackPanel>
 
                 <!-- 년/월 표시, 넘기기 버튼 -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Button Content="&lt;" FontSize="15"
-                                    Width="30"
-                                    Click="OnClick_PreviousMonth"/>
-                    <Button Content="Binding 해야함(년/월)" FontSize="15"
-                                    MinWidth="110" Width="Auto" Height="Auto" Margin="10,0,10,0" Padding="5"
-                                    Click="OnClick_Calneder"/>
+                                Width="30"
+                                Command="{Binding PreviousMonthCommand}"/>
+                    <Button Content="{Binding CalendarVM.CurrentMonthText}" FontSize="15"
+                                MinWidth="110" Width="Auto" Height="Auto" Margin="10,0,10,0" Padding="5"/>
+                    <!-- Click="OnClick_Calneder" -->
                     <Button Content="&gt;" FontSize="15"
-                                    Width="30"
-                                    Click="OnClick_NextMonth"/>
+                                Width="30"
+                                Command="{Binding NextMonthCommand}"/>
                 </StackPanel>
             </Grid>
         </Border>
@@ -134,15 +142,116 @@
 
         <!-- 달력 UI -->
         <Border  Grid.Column="1" Grid.Row="2" Padding="10">
-            <Grid x:Name="DateGrid">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Grid x:Name="CalendarGrid" Grid.Row="1" Grid.ColumnSpan="100">
-                </Grid>
+
+                <!-- 요일 헤더 -->
+                <ItemsControl Grid.Row="0" ItemsSource="{Binding CalendarVM.WeekDays}" Grid.ColumnSpan="4" HorizontalAlignment="Right" Width="805">
+                    <!-- ItemsPanel 내에서 사용될 Panel들을 정의하는 곳 -->
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="7"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <!-- Panel에 들어갈 Element들을 정의하는 곳 -->
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" Margin="5, 0, 0, 5" Padding="5" 
+                                        BorderBrush="{Binding Converter={StaticResource WeekDayToColorConverter}}">
+                                <TextBlock Text="{Binding}" FontSize="15" FontWeight="Bold" TextAlignment="Center"
+                                                VerticalAlignment="Center" HorizontalAlignment="Stretch"
+                                                Foreground="{Binding Converter={StaticResource WeekDayToColorConverter}}"/>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- 날짜 표시 -->
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding CalendarVM.Days}">
+                    <!-- ItemsPanel 내에서 사용될 Panel들을 정의하는 곳 -->
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="7"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <!-- Panel에 들어갈 Element들을 정의하는 곳 -->
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" Margin="5, 0, 0, 5" Padding="5">
+
+                                <!-- Border의 기본 색상은 Black, 이번달이 아니면 Gray, 일요일이면 Crimson, 토요일이면 Blue -->
+                                <Border.Style>
+                                    <Style TargetType="Border">
+                                        <Setter Property="BorderBrush" Value="Black"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsCurrentMonth}" Value="false">
+                                                <Setter Property="BorderBrush" Value="DimGray"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsToday}" Value="true">
+                                                <Setter Property="BorderBrush" Value="Green"/>
+                                            </DataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsCurrentMonth}" Value="True"/>
+                                                    <Condition Binding="{Binding DayOfWeek}" Value="Sunday"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="BorderBrush" Value="Crimson"/>
+                                            </MultiDataTrigger>
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition Binding="{Binding IsCurrentMonth}" Value="True"/>
+                                                    <Condition Binding="{Binding DayOfWeek}" Value="Saturday"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="BorderBrush" Value="Blue"/>
+                                            </MultiDataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+
+                                <!-- TextBlock의 기본 색상은 Black, 이번달이 아니면 Gray, 일요일이면 Crimson, 토요일이면 Blue -->
+                                <TextBlock Text="{Binding DayNumber}"
+                                                    HorizontalAlignment="Stretch" VerticalAlignment="Top" TextAlignment="Left">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="Black"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsCurrentMonth}" Value="false">
+                                                    <Setter Property="Foreground" Value="DimGray"/>
+                                                    <Setter Property="FontSize" Value="10"/>
+                                                    <Setter Property="FontStyle" Value="Italic"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding IsToday}" Value="true">
+                                                    <Setter Property="Foreground" Value="Green"/>
+                                                </DataTrigger>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding IsCurrentMonth}" Value="True"/>
+                                                        <Condition Binding="{Binding DayOfWeek}" Value="Sunday"/>
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="Foreground" Value="Crimson"/>
+                                                </MultiDataTrigger>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding IsCurrentMonth}" Value="True"/>
+                                                        <Condition Binding="{Binding DayOfWeek}" Value="Saturday"/>
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="Foreground" Value="Blue"/>
+                                                </MultiDataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </Grid>
         </Border>
-        
+
     </Grid>
 </Window>

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TODO_List.Calendar
+﻿/*
+ * 공휴일 지정해놓는 클래스
+ */
+namespace TODO_List.Model
 {
     public static class HolidayProvider
     {
