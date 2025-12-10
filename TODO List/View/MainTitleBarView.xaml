@@ -41,7 +41,15 @@
                 <!-- 일정 추가 버튼 -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Stretch">
                     <Button Content="+" FontSize="15" FontWeight="Bold"
-                                MinWidth="30" Width="Auto" Height="Auto" Padding="5"/>
+                                MinWidth="30" Width="Auto" Height="Auto" Padding="5"
+                                Click="OnClick_AddTaskBtn">
+                        <Button.ContextMenu>
+                            <ContextMenu x:Name="AddMenu">
+                                <MenuItem Header="일정 추가" Command="{Binding AddScheduleCommand}"/>
+                                <MenuItem Header="규칙 추가" Command="{Binding AddRoutineCommand}"/>
+                            </ContextMenu>
+                        </Button.ContextMenu>
+                    </Button>
                 </StackPanel>
 
                 <!-- 년/월 표시, 넘기기 버튼 -->

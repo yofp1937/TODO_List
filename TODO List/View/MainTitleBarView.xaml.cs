@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace TODO_List.View
@@ -55,6 +56,15 @@ namespace TODO_List.View
             if (window != null)
             {
                 window.Close();
+            }
+        }
+
+        private void OnClick_AddTaskBtn(object sender, RoutedEventArgs e)
+        {
+            if(sender is Button btn)
+            {
+                // Context Menu 강제로 열기
+                btn.ContextMenu.IsOpen = true;
             }
         }
         #endregion

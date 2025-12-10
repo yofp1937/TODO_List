@@ -2,14 +2,13 @@
  * 메인 UI에 달력을 자동으로 생성해주는 클래스
  */
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Diagnostics;
 using TODO_List.Model;
 using TODO_List.Model.DataClass;
 
 namespace TODO_List.ViewModel
 {
-    internal class CalendarViewModel : INotifyPropertyChanged
+    public class CalendarViewModel : BaseViewModel
     {
         #region Property
         public ObservableCollection<string> WeekDays { get; private set; } = new ObservableCollection<string>
@@ -24,18 +23,18 @@ namespace TODO_List.ViewModel
             get => _currentMonth;
             set
             {
-                _currentMonth = value;
-                OnPropertyChanged(nameof(CurrentMonth));
-                OnPropertyChanged(nameof(CurrentMonthText));
-                CreateCalendar(CurrentMonth);
+                // value가 기존 _currentMonth와 다르면 if문 실행
+                if (SetProperty(ref _currentMonth, value))
+                {
+                    OnPropertyChanged(nameof(CurrentMonthText));
+                    CreateCalendar(CurrentMonth);
+                }
             }
         }
         public string CurrentMonthText => $"{_currentMonth.Year}년 {_currentMonth.Month}월";
-
-        public event PropertyChangedEventHandler? PropertyChanged;
         #endregion
 
-        #region 생성자
+        #region 생성자, override
         /// <summary>
         /// CalendarBuilder 생성자
         /// </summary>
@@ -43,17 +42,8 @@ namespace TODO_List.ViewModel
         {
             CurrentMonth = DateTime.Today; // 2.CurrentMonth 설정으로 달력 동적 생성
         }
-        #endregion
 
-        /// <summary>
-        /// 값이 변할때 UI를 갱신시키기위한 알림 함수
-        /// </summary>
-        /// <param name="propertyName"></param>
-        #region OnPropertyChanged
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        protected override void RegisterICommands() { }
         #endregion
 
         #region 달력 생성

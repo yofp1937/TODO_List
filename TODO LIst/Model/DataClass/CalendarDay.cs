@@ -4,7 +4,7 @@
 
 namespace TODO_List.Model.DataClass
 {
-    internal class CalendarDay
+    public class CalendarDay
     {
         public int DayNumber { get; set; }
         public DayOfWeek DayOfWeek { get; set; }
