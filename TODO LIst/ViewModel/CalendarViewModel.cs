@@ -57,7 +57,6 @@ namespace TODO_List.ViewModel
 
             DateTime firstDay = new DateTime(targetMonth.Year, targetMonth.Month, 1);
             int startOffset = (int)firstDay.DayOfWeek; // 0: 일요일 ~ 6: 토요일
-            Debug.WriteLine($"startOffset = {startOffset}");
             int daysInMonth = DateTime.DaysInMonth(targetMonth.Year, targetMonth.Month); // 이번달이 며칠인지
 
             // 이전달 공백

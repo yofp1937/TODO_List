@@ -3,7 +3,7 @@
  */
 using System.Windows.Input;
 
-namespace TODO_List.Model
+namespace TODO_List.Common.Commands
 {
     internal class RelayCommand : ICommand
     {

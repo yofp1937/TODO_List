@@ -1,5 +1,8 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace TODO_List.View
@@ -15,59 +18,6 @@ namespace TODO_List.View
         {
             return Window.GetWindow(this);
         }
-
-        #region Opacity
-        private void Slider_Opacity(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            Window window = GetMainWindow();
-            if (window != null)
-            {
-                double percent = e.NewValue; // 0~100
-                window.Opacity = percent / 100.0; // WPF Opacity는 0~1
-            }
-        }
-        #endregion
-
-        #region OnClick
-        private void OnClick_Minimize(object sender, RoutedEventArgs e)
-        {
-            Window window = GetMainWindow();
-            if (window != null)
-            {
-                window.WindowState = WindowState.Minimized;
-            }
-        }
-
-        private void OnClick_Maximize(object sender, RoutedEventArgs e)
-        {
-            Window window = GetMainWindow();
-            if (window != null)
-            {
-                if (window.WindowState == WindowState.Maximized)
-                    window.WindowState = WindowState.Normal;
-                else
-                    window.WindowState = WindowState.Maximized;
-            }
-        }
-
-        private void OnClick_Close(object sender, RoutedEventArgs e)
-        {
-            Window window = GetMainWindow();
-            if (window != null)
-            {
-                window.Close();
-            }
-        }
-
-        private void OnClick_AddTaskBtn(object sender, RoutedEventArgs e)
-        {
-            if(sender is Button btn)
-            {
-                // Context Menu 강제로 열기
-                btn.ContextMenu.IsOpen = true;
-            }
-        }
-        #endregion
 
         #region MoveWindow
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
